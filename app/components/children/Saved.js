@@ -2,8 +2,9 @@
 var React = require("react");
 
 
-var Saved = React.createClass({
-    render: function() {
+class Saved extends React.Component {
+    render() {
+        console.log(this.props, 'this.props');
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">
@@ -11,12 +12,20 @@ var Saved = React.createClass({
                 </div>
                 <div className="panel-body text-center">
 
-                     {this.props.Saved}
-                     
+                    {/* Here we use a map function to loop through an array in JSX */}
+                    {this.props.Saved.map((search, i) => {
+                        return (
+                            <div key={i}>
+                                <a href={search.url} target="_blank" >{search.title} - {search.date}</a>
+                                <button onClick={this.props.getDelete.bind(this, search)} className="o btn btn-danger">Delete</button>
+                                <br/>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         );
     }
-});
+};
 
-module.exports = Saved;
+export default Saved ;

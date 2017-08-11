@@ -1,37 +1,42 @@
 // Include React
+// Include React
 var React = require("react");
+// Creating the Form component
+class Search extends React.Component
+{
+    // Here we set a generic state associated with the text being searched for
+    constructor(props){
+        super(props);
+        this.state = {term: "", startYear: "", endYear: ""};
 
-var Search = React.createClass({
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
-    getInitialState: function() {
-        return { 
-            term: "",
-            startYear: "",
-            endYear: ""
-            };
-    },   
-
-    handleChange: function(event) {
-        
-        var name = event.target.name;
+    // This function will respond to the user input
+    handleChange(event) {
+        const target = event.target;
+        const name = target.name;
         this.setState({
             [name]: event.target.value
         });
-    },
+    }
 
-    handleSubmit: function(event) {
-        
+    // When a user submits...
+    handleSubmit(event) {
         event.preventDefault();
-
+    // Gets passed to main
         this.props.setTerm(this.state.term);
         this.props.setStartYear(this.state.startYear);
         this.props.setEndYear(this.state.endYear);
 
         this.setState({term: "", startYear: "", endYear: ""});
-        console.log("End Year" , this.props.endYear);
-    },
-   
-    render: function() {
+        console.log("term", this.state.term);
+        console.log("start year", this.state.startYear);
+        console.log("End Year" , this.state.endYear);
+    }
+    // Here we describe this component's render method
+    render() {
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">
@@ -54,6 +59,7 @@ var Search = React.createClass({
                                 required
                             />
                             <br />
+                            {/*Start Year*/}
                             <h4 className="">
                                 <strong>Start Year</strong>
                             </h4>
@@ -93,6 +99,7 @@ var Search = React.createClass({
             </div>
         );
     }
-});  
+};
 
-module.exports = Search;
+// Export the component back for use in other files
+export default Search;

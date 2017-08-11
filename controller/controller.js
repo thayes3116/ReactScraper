@@ -25,9 +25,9 @@ router.get("/api/saved", function(req, res) {
   });
 });
 
-router.post("api/saved", function(req, res) {
+router.post("/api/saved", function(req, res, next) {
 
-
+  console.log();
   console.log("BODY: " + req.body.title);
 
   
@@ -44,7 +44,7 @@ router.post("api/saved", function(req, res) {
   });
 });
 
-router.post("api/saved/delete", function(req, res) {
+router.post("api/saved/delete", function(req, res, next) {
   if (err) throw err;
 })
 
