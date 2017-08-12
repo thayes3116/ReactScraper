@@ -15,10 +15,18 @@ class Results extends React.Component{
                   {/*Maps through the results array in the constructor*/}
                     {this.props.results.map((search, i) => {
                         return (
-                            <p key={i}>
-                                <a href={search.url} target="_blank">{search.head}</a>
+                            <div key={i}> 
+                                <p>
+                                    <a href={search.url} target="_blank">{search.head}</a>
+                                </p>
+                                <br></br>
+                                <p>{search.snippet}</p>
+                                <br></br>
+                                <p>Date Published: {search.pub_date}</p>
                                 <button className="o" onClick={this.props.getClicked.bind(this, search)} type="button btn-success">Save</button>
-                            </p>
+                                <br></br>
+                                <hr></hr>
+                            </div>
                         );
                     })}
                 </div>

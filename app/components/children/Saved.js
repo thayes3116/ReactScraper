@@ -4,7 +4,7 @@ var React = require("react");
 
 class Saved extends React.Component {
     render() {
-        console.log(this.props, 'this.props');
+        // console.log(this.props, 'this.props');
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">

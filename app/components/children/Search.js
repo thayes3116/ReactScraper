@@ -40,47 +40,50 @@ class Search extends React.Component
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">
-                    <h3 className="panel-title text-center">Search</h3>
+                    <h3 className="panel-title text-center">Enter Your Search Parameters Here</h3>
                 </div>
                 <div className="panel-body text-center">
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             {/*Title*/}
-                            <h4 className="">
-                                <strong>Title</strong>
+                            <h4 className="text-left">
+                                <strong>Term, Title, or Topic</strong>
                             </h4>
                             <input
                                 name="term"
+                                placeholder="my favorite topic"
                                 value={this.state.term}
                                 type="text"
-                                className="form-control text-center"
+                                className="form-control text-left"
                                 id="term"
                                 onChange={this.handleChange}
                                 required
                             />
                             <br />
                             {/*Start Year*/}
-                            <h4 className="">
-                                <strong>Start Year</strong>
+                            <h4 className="text-left">
+                                <strong>Starting Year</strong>
                             </h4>
                             <input
                                 name="startYear"
+                                placeholder="2000"
                                 value={this.state.startYear}
                                 type="text"
-                                className="form-control text-center"
+                                className="form-control text-left"
                                 id="startYear"
                                 onChange={this.handleChange}
                                 required
                             />
                             <br />
-                            <h4 className="">
-                                <strong>End Year</strong>
+                            <h4 className="text-left">
+                                <strong>Ending Year</strong>
                             </h4>
                             <input
                                 name="endYear"
+                                placeholder="2030"
                                 value={this.state.endYear}
                                 type="text"
-                                className="form-control text-center"
+                                className="form-control text-left"
                                 id="endYear"
                                 onChange={this.handleChange}
                                 required

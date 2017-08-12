@@ -17,7 +17,7 @@ class Main extends React.Component {
 
         this.state = {
             searchTerm: "",
-            starYear: "",
+            startYear: "",
             endYear: "",
             results:[],
             Saved: []
@@ -45,12 +45,13 @@ class Main extends React.Component {
         // Run the query for the Search
         if (prevState.searchTerm !== this.state.searchTerm) {
             //Clears the Results array if there is a new Search
+            console.log(this.state, "this.state in components");
             this.setState({results: []});
-            helpers.runQuery(this.state.searchTerm, this.state.starYear).then(function (data) {
+            helpers.runQuery(this.state.searchTerm, this.state.startYear, this.state.endYear).then(function (data) {
                 
                 if (data !== this.state.results) {
-                    for (var i = 0; i < 4; i++) {
-                        var newResults = {head: data[i].headline.main, url:data[i].web_url};
+                    for (var i = 0; i < 8; i++) {
+                        var newResults = {head: data[i].headline.main, url:data[i].web_url, snippet:data[i].snippet, pub_date:data[i].pub_date};
                         // Pushes to results array
                         this.setState({results: this.state.results.concat(newResults)});
                     }
@@ -73,23 +74,22 @@ class Main extends React.Component {
     }
 
     getClick(article) {
-        console.log("article in get clicked", article);
+        // console.log("article in get clicked", article);
         helpers.postSaved(article.head, article.url).then(function () {
             // After we've done the post... then get the updated Saved
             helpers.getSaved().then(function (response) {
                 this.setState({Saved: response.data});
-                console.log('Saved', this.state.Saved);
+                // console.log('Saved', this.state.Saved);
             }.bind(this));
         }.bind(this));
     }
 
     getDelete(article){
-        console.log(article._id, "article in get delete");
+        // console.log(article._id, "article in get delete");
         helpers.deleteSaved(article._id).then(function(){
             // After we've done the delete... then get the updated Saved
             helpers.getSaved().then(function (response) {
                 this.setState({Saved: response.data});
-                console.log('Saved', this.state.Saved);
                 }.bind(this));
         }.bind(this));
     }
@@ -100,9 +100,11 @@ class Main extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="jumbotron">
-                        <h2 className="text-center">Ny Time Article Scrubber</h2>
+                        <h2 className="text-center">NY Times Article Search</h2>
                         <p className="text-center">
-                            <em>Search for article of interest</em>
+                            <em>Search for articles that interest you</em><br></br>
+                            <em>Save them</em><br></br>
+                            <em>Delete them</em>
                         </p>
                     </div>
 

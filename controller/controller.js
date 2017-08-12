@@ -14,7 +14,7 @@ router.get("/api/saved", function(req, res) {
 
    Article.find({}).sort([
     ["date", "descending"]
-  	]).limit(6).exec(function(err, doc) {
+  	]).limit(8).exec(function(err, doc) {
    
     if (err) throw err
 
