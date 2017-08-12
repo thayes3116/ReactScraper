@@ -45,15 +45,28 @@ class Main extends React.Component {
         // Run the query for the Search
         if (prevState.searchTerm !== this.state.searchTerm) {
             //Clears the Results array if there is a new Search
-            console.log(this.state, "this.state in components");
+            
             this.setState({results: []});
             helpers.runQuery(this.state.searchTerm, this.state.startYear, this.state.endYear).then(function (data) {
                 
                 if (data !== this.state.results) {
                     for (var i = 0; i < 8; i++) {
-                        var newResults = {head: data[i].headline.main, url:data[i].web_url, snippet:data[i].snippet, pub_date:data[i].pub_date};
-                        // Pushes to results array
-                        this.setState({results: this.state.results.concat(newResults)});
+                        
+                        var newResults = {head: data[i].headline.main, url:data[i].web_url, snippet:data[i].snippet};
+                        
+                        //Adds published date if one is available
+                        if(data[i].pub_date){
+                            console.log(data[i].pub_date.substr(0,10));
+                            newResults.pub_date = data[i].pub_date.substr(0,10);
+                        }else{
+
+                            newResults.pub_date = "Not Available";
+                            console.log(newResults);
+                        }
+                        // Pushes to results array if article is not already in the array
+                        if(this.state.results.indexOf(newResults) === -1){
+                            this.setState({results: this.state.results.concat(newResults)});
+                        }
                     }
                 }
             }.bind(this));

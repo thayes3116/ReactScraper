@@ -10,7 +10,7 @@ var helper = {
     var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${title}&?being_date=${startYear}&?end_date=${endYear}`
 
     return axios.get(url).then(function(response) {
-      console.log(response.data);
+      // console.log(response.data);
         var articleTitle = response.data.response.docs;
         // If get get a result, return that result's formatted address property
       if (articleTitle) {

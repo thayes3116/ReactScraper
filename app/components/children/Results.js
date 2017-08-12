@@ -19,9 +19,8 @@ class Results extends React.Component{
                                 <p>
                                     <a href={search.url} target="_blank">{search.head}</a>
                                 </p>
-                                <br></br>
+                                
                                 <p>{search.snippet}</p>
-                                <br></br>
                                 <p>Date Published: {search.pub_date}</p>
                                 <button className="o" onClick={this.props.getClicked.bind(this, search)} type="button btn-success">Save</button>
                                 <br></br>
