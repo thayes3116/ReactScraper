@@ -84,8 +84,8 @@ class Main extends React.Component {
     }
 
     getDelete(article){
-        console.log(article, "article in get delete");
-        helpers.deleteSaved(article.head).then(function(){
+        console.log(article._id, "article in get delete");
+        helpers.deleteSaved(article._id).then(function(){
             // After we've done the delete... then get the updated Saved
             helpers.getSaved().then(function (response) {
                 this.setState({Saved: response.data});
@@ -122,7 +122,7 @@ class Main extends React.Component {
 
                 <div className="row">
 
-                    <Saved Saved={this.state.Saved}/>
+                    <Saved Saved={this.state.Saved} getDelete={this.getDelete}/>
 
                 </div>
 

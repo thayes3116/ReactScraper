@@ -41,8 +41,17 @@ var helper = {
       });;
   },
 
-  deleteSaved: function(title) {
-    console.log(title, "delete saved title");
+  deleteSaved: function(_id) {
+    console.log(_id, "_id saved title");
+    return axios.post("http://localhost:8080/api/saved/delete/",
+      {
+        id:_id
+      }
+    ).then(function(response){
+      console.log(response, "response");
+    }).catch(function (error){
+      console.log(error, "error");
+    })
   }
 
 };

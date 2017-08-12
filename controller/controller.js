@@ -27,7 +27,6 @@ router.get("/api/saved", function(req, res) {
 
 router.post("/api/saved", function(req, res, next) {
 
-  console.log();
   console.log("BODY: " + req.body.title);
 
   
@@ -44,8 +43,18 @@ router.post("/api/saved", function(req, res, next) {
   });
 });
 
-router.post("api/saved/delete", function(req, res, next) {
-  if (err) throw err;
+router.post("/api/saved/delete", function(req, res, next) {
+
+  console.log("hit delete in controller");
+  console.log(req.body.id, "req.body.id");
+  Article.findByIdAndRemove(req.body.id, function(err, article){
+    if (err) throw err;
+
+    else{
+      res.send("Article Deleted")
+      console.log("article deleted");
+    }
+  })
 })
 
 // Export routes for server.js to use.
