@@ -33,7 +33,9 @@ router.post("/api/saved", function(req, res, next) {
   Article.create({
     title: req.body.title,
     date: Date.now(),
-    url: req.body.url
+    url: req.body.url,
+    snippet: req.body.snippet,
+    pub_date: req.body.pub_date
   }, function(err) {
     if (err) throw err;
 

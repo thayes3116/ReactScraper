@@ -16,9 +16,15 @@ class Saved extends React.Component {
                     {this.props.Saved.map((search, i) => {
                         return (
                             <div key={i}>
-                                <a href={search.url} target="_blank" >{search.title} - {search.date}</a>
+                                <a href={search.url} target="_blank" >{search.title}</a>
+                                <br></br>
+                                <br></br>
+                                <p>{search.snippet}</p>
+                                
+                                <p>{search.pub_date}</p>
+
                                 <button onClick={this.props.getDelete.bind(this, search)} className="o btn btn-danger">Delete</button>
-                                <br/>
+                                <hr></hr>
                             </div>
                         );
                     })}

@@ -27,12 +27,14 @@ var helper = {
   },
 
   // This function posts new searches to our database.
-  postSaved: function(Title, Url) {
+  postSaved: function(Title, Url, Snippet, Pub_date) {
     console.log("title in postSaved", Title);
       return axios.post("http://localhost:8080/api/saved/", 
         {
          title: Title,
-          url: Url 
+          url: Url,
+          snippet: Snippet,
+          pub_date: Pub_date
         }
       ).then(function(response){
         console.log(response, "response");

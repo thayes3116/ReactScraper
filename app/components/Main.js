@@ -34,6 +34,7 @@ class Main extends React.Component {
     componentDidMount() {
         // Get the latest Saved.
         helpers.getSaved().then(function (response) {
+            console.log("response.data",response.data);
             if (response !== this.state.Saved) {
                 this.setState({Saved: response.data});
             }
@@ -88,7 +89,7 @@ class Main extends React.Component {
 
     getClick(article) {
         // console.log("article in get clicked", article);
-        helpers.postSaved(article.head, article.url).then(function () {
+        helpers.postSaved(article.head, article.url, article.snippet, article.pub_date).then(function () {
             // After we've done the post... then get the updated Saved
             helpers.getSaved().then(function (response) {
                 this.setState({Saved: response.data});
@@ -120,27 +121,28 @@ class Main extends React.Component {
                             <em>Delete them</em>
                         </p>
                     </div>
+                </div>    
+                <div className="row">
 
-                    <div className="col-md-6">
+                    <Form setTerm={this.setTerm} setStartYear={this.setStartYear} setEndYear={this.setEndYear}/>
 
-                        <Form setTerm={this.setTerm} setStartYear={this.setStartYear} setEndYear={this.setEndYear}/>
+                </div>
 
-                    </div>
-
-                    <div className="col-md-6">
+                <div className="row">
+                    <div className="col-sm-6">
 
                         <Results results={this.state.results} getClicked={this.getClick}/>
 
                     </div>
 
+                
+
+                    <div className="col-sm-6">
+
+                        <Saved Saved={this.state.Saved} getDelete={this.getDelete}/>
+
+                    </div>
                 </div>
-
-                <div className="row">
-
-                    <Saved Saved={this.state.Saved} getDelete={this.getDelete}/>
-
-                </div>
-
             </div>
         );
     }

@@ -46,7 +46,7 @@ class Search extends React.Component
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             {/*Title*/}
-                            <h4 className="text-left">
+                            <h4 className="text-center">
                                 <strong>Term, Title, or Topic</strong>
                             </h4>
                             <input
@@ -54,14 +54,14 @@ class Search extends React.Component
                                 placeholder="my favorite topic"
                                 value={this.state.term}
                                 type="text"
-                                className="form-control text-left"
+                                className="form-control text-center"
                                 id="term"
                                 onChange={this.handleChange}
                                 required
                             />
                             <br />
                             {/*Start Year*/}
-                            <h4 className="text-left">
+                            <h4 className="text-center">
                                 <strong>Starting Year</strong>
                             </h4>
                             <input
@@ -69,13 +69,13 @@ class Search extends React.Component
                                 placeholder="2000"
                                 value={this.state.startYear}
                                 type="text"
-                                className="form-control text-left"
+                                className="form-control text-center"
                                 id="startYear"
                                 onChange={this.handleChange}
                                 required
                             />
                             <br />
-                            <h4 className="text-left">
+                            <h4 className="text-center">
                                 <strong>Ending Year</strong>
                             </h4>
                             <input
@@ -83,7 +83,7 @@ class Search extends React.Component
                                 placeholder="2030"
                                 value={this.state.endYear}
                                 type="text"
-                                className="form-control text-left"
+                                className="form-control text-center"
                                 id="endYear"
                                 onChange={this.handleChange}
                                 required
