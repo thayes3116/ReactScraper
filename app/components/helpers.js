@@ -6,6 +6,9 @@ var helper = {
 
   // This function serves our purpose of running the query to geolocate.
   runQuery: function(title, startYear, endYear) {
+    startYear += "0101";
+    endYear += "0101";
+    console.log("help run query", title, startYear, endYear);
     var apiKey = "b1d19e116cfd40d789fc1f8a9404d128";
     var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${title}&?being_date=${startYear}&?end_date=${endYear}`
 
@@ -37,7 +40,7 @@ var helper = {
           pub_date: Pub_date
         }
       ).then(function(response){
-        console.log(response, "response");
+        // console.log(response, "response");
 
       }).catch(function (error) {
         console.log(error, "error");
@@ -45,15 +48,15 @@ var helper = {
   },
 
   deleteSaved: function(_id) {
-    console.log(_id, "_id saved title");
+    // console.log(_id, "_id saved title");
     return axios.post("http://localhost:8080/api/saved/delete/",
       {
         id:_id
       }
     ).then(function(response){
-      console.log(response, "response");
+      // console.log(response, "response");
     }).catch(function (error){
-      console.log(error, "error");
+      // console.log(error, "error");
     })
   }
 

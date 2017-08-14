@@ -34,7 +34,7 @@ class Main extends React.Component {
     componentDidMount() {
         // Get the latest Saved.
         helpers.getSaved().then(function (response) {
-            console.log("response.data",response.data);
+            // console.log("response.data",response.data);
             if (response !== this.state.Saved) {
                 this.setState({Saved: response.data});
             }
@@ -46,7 +46,7 @@ class Main extends React.Component {
         // Run the query for the Search
         if (prevState.searchTerm !== this.state.searchTerm) {
             //Clears the Results array if there is a new Search
-            
+            console.log("component this.state", this.state);
             this.setState({results: []});
             helpers.runQuery(this.state.searchTerm, this.state.startYear, this.state.endYear).then(function (data) {
                 
@@ -80,11 +80,11 @@ class Main extends React.Component {
     }
 
     setStartYear(startYear) {
-        this.setState({starYear: startYear});
+        this.setState({startYear: startYear});
     }
 
     setEndYear(endYear) {
-        this.setState({endYears: endYear});
+        this.setState({endYear: endYear});
     }
 
     getClick(article) {
