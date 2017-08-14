@@ -113,7 +113,7 @@ class Main extends React.Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="jumbotron">
+                    <div id = "jumbo" className="jumbotron">
                         <h2 className="text-center">NY Times Article Search</h2>
                         <p className="text-center">
                             <em>Search for articles that interest you</em><br></br>

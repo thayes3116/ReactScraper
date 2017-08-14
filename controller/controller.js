@@ -47,8 +47,8 @@ router.post("/api/saved", function(req, res, next) {
 
 router.post("/api/saved/delete", function(req, res, next) {
 
-  console.log("hit delete in controller");
-  console.log(req.body.id, "req.body.id");
+  // console.log("hit delete in controller");
+  // console.log(req.body.id, "req.body.id");
   Article.findByIdAndRemove(req.body.id, function(err, article){
     if (err) throw err;
 
