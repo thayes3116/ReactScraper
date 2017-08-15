@@ -10,7 +10,8 @@ var helper = {
     endYear += "0101";    
     console.log("help run query", title, startYear, endYear);
     var apiKey = "b1d19e116cfd40d789fc1f8a9404d128";
-    var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${title}&?begin_date=${startYear}&?end_date=${endYear}`
+    var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${title}&begin_date=${startYear}&end_date=${endYear}`
+    
     console.log(url);
     return axios.get(url).then(function(response) {
       // console.log(response.data);

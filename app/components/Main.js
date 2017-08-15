@@ -4,7 +4,6 @@ var React = require("react");
 import Form from "./children/Search";
 import Results from "./children/Results";
 import Saved from "./children/Saved";
-
 // Helper for making AJAX requests to our API
 import helpers from "./helpers";
 
@@ -111,9 +110,10 @@ class Main extends React.Component {
     // Here we render the function
     render() {
         return (
+
             <div className="container">
                 <div className="row">
-                    <div id = "jumbo" className="jumbotron">
+                    <div className="jumbotron">
                         <h2 className="text-center">NY Times Article Search</h2>
                         <p className="text-center">
                             <em>Search for articles that interest you</em><br></br>
