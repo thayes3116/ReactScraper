@@ -27,13 +27,13 @@ var helper = {
 
   // This function hits our own server to retrieve the record of query results
   getSaved: function() {
-    return axios.get("http://localhost:8080/api/saved/");
+    return axios.get("https://ny-times-react-search.herokuapp.com/api/saved/");
   },
 
   // This function posts new searches to our database.
   postSaved: function(Title, Url, Snippet, Pub_date) {
     console.log("title in postSaved", Title);
-      return axios.post("http://localhost:8080/api/saved/", 
+      return axios.post("https://ny-times-react-search.herokuapp.com/api/saved/", 
         {
          title: Title,
           url: Url,
@@ -50,7 +50,7 @@ var helper = {
 
   deleteSaved: function(_id) {
     // console.log(_id, "_id saved title");
-    return axios.post("http://localhost:8080/api/saved/delete/",
+    return axios.post("https://ny-times-react-search.herokuapp.com/api/saved/delete/",
       {
         id:_id
       }
