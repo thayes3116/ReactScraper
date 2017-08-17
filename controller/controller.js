@@ -1,11 +1,12 @@
-      // Requiring comment and article models
+// Requiring article models
 
 var Article = require("../model/article.js");
 
-
+//Requiring express and router
 var express = require("express");
 var router = express.Router();
 
+//
 router.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });

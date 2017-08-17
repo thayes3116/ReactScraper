@@ -10,7 +10,7 @@ var helper = {
     endYear += "0101";    
     console.log("help run query", title, startYear, endYear);
     var apiKey = "b1d19e116cfd40d789fc1f8a9404d128";
-    var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${title}&begin_date=${startYear}&end_date=${endYear}`
+    var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${title}&begin_date=${startYear}&?end_date=${endYear}`
     
     console.log(url);
     return axios.get(url).then(function(response) {
@@ -27,13 +27,13 @@ var helper = {
 
   // This function hits our own server to retrieve the record of query results
   getSaved: function() {
-    return axios.get("https://ny-times-react-search.herokuapp.com/api/saved/");
+    return axios.get("http://localhost:8080/api/saved/");
   },
 
   // This function posts new searches to our database.
   postSaved: function(Title, Url, Snippet, Pub_date) {
     console.log("title in postSaved", Title);
-      return axios.post("https://ny-times-react-search.herokuapp.com/api/saved/", 
+      return axios.post("http://localhost:8080/api/saved/", 
         {
          title: Title,
           url: Url,
@@ -50,7 +50,7 @@ var helper = {
 
   deleteSaved: function(_id) {
     // console.log(_id, "_id saved title");
-    return axios.post("https://ny-times-react-search.herokuapp.com/api/saved/delete/",
+    return axios.post("http://localhost:8080/api/saved/delete/",
       {
         id:_id
       }
